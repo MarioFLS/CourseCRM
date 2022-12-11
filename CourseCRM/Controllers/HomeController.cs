@@ -1,4 +1,5 @@
 ﻿using CourseCRM.Models;
+using CourseCRM.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +7,17 @@ namespace CourseCRM.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ICourseRepository _courseRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICourseRepository courseRepository)
         {
-            _logger = logger;
+            _courseRepository = courseRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<Lead> leads = _courseRepository.GetAllLeads();
+            return View(leads);
         }
 
         public IActionResult Privacy()
