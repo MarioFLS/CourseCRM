@@ -18,5 +18,12 @@ namespace CourseCRM.Models
         [Required(ErrorMessage = "O CPF é obrigatório")]
         [StringLengthAttribute(11, ErrorMessage = "O CPF deve ter exatos 11 números")]
         public string Cpf { get; set; } = default!;
+
+
+        public string FormatCpf()
+        {
+            // Formatação de CPF http://www.codigoexpresso.com.br/Home/Postagem/28
+            return Convert.ToUInt64(Cpf).ToString(@"000\.000\.000\-00");
+        }
     }
 }
