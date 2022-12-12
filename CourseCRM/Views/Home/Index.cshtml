@@ -4,8 +4,28 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Estudantes</h1>
+    <h1 class="display-4">Dados dos Estudantes</h1>
     <h2 class="display-8">Esses são todos os nossos Estudantes!</h2>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-success" asp-controller="Home" asp-action="CreateLeader" role="button">Adicionar novo Estudante</a>
+    </div>
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert position-absolute top-0 end-0" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert position-absolute top-0 end-0" data-bs-dismiss="alert" aria-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
     <hr />
 
     <table class="table">
