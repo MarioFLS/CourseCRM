@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using CourseCRM.Models;
+﻿using CourseCRM.Models;
 using CourseCRM.Repository;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CourseCRM.Controllers
 {
@@ -19,13 +14,12 @@ namespace CourseCRM.Controllers
             _context = context;
         }
 
-        // GET: Courses
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Course.ToListAsync());
+            return View(await _context.Course.ToListAsync());
         }
 
-        // GET: Courses/Details/5
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Course == null)
@@ -43,15 +37,11 @@ namespace CourseCRM.Controllers
             return View(course);
         }
 
-        // GET: Courses/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Courses/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] Course course)
@@ -60,13 +50,13 @@ namespace CourseCRM.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Add(course);
+                    _context.Course.Add(course);
                     await _context.SaveChangesAsync();
 
                     TempData["MensagemSucesso"] = "Curso Criado com sucesso!";
                     return RedirectToAction(nameof(Index));
                 }
-                
+
                 return View(course);
             }
             catch (Exception erro)
@@ -75,10 +65,9 @@ namespace CourseCRM.Controllers
                    $"\nDetalhe do erro: {erro.Message}";
                 return View(course);
             }
-            
+
         }
 
-        // GET: Courses/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Course == null)
@@ -94,9 +83,6 @@ namespace CourseCRM.Controllers
             return View(course);
         }
 
-        // POST: Courses/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Course course)
@@ -129,7 +115,6 @@ namespace CourseCRM.Controllers
             return View(course);
         }
 
-        // GET: Courses/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Course == null)
@@ -147,7 +132,6 @@ namespace CourseCRM.Controllers
             return View(course);
         }
 
-        // POST: Courses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -161,14 +145,14 @@ namespace CourseCRM.Controllers
             {
                 _context.Course.Remove(course);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CourseExists(int id)
         {
-          return _context.Course.Any(e => e.Id == id);
+            return _context.Course.Any(e => e.Id == id);
         }
     }
 }
