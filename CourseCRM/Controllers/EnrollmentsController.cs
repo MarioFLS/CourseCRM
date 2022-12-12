@@ -82,59 +82,6 @@ namespace CourseCRM.Controllers
         }
 
 
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Enrollment == null)
-            {
-                return NotFound();
-            }
-
-            var enrollment = await _context.Enrollment.FindAsync(id);
-            if (enrollment == null)
-            {
-                return NotFound();
-            }
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "Name", enrollment.CourseId);
-            ViewData["LeadId"] = new SelectList(_context.Leads, "Id", "Email", enrollment.LeadId);
-            return View(enrollment);
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CourseId,LeadId,Registration")] Enrollment enrollment)
-        {
-            if (id != enrollment.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(enrollment);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EnrollmentExists(enrollment.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CourseId"] = new SelectList(_context.Course, "Id", "Name", enrollment.CourseId);
-            ViewData["LeadId"] = new SelectList(_context.Leads, "Id", "Email", enrollment.LeadId);
-            return View(enrollment);
-        }
-
-
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Enrollment == null)

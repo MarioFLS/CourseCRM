@@ -59,10 +59,10 @@ namespace CourseCRM.Controllers
 
                 return View(course);
             }
-            catch (Exception erro)
+            catch (Exception)
             {
-                TempData["MensagemErro"] = $"Não foi possível criar seu usuário, tente novamante!" +
-                   $"\nDetalhe do erro: {erro.Message}";
+                TempData["MensagemErro"] = $"Não foi possível criar seu curso, tente novamante!" +
+                   $"\nProvavelmente está tentando criar um Curso com nome já existente!";
                 return View(course);
             }
 
@@ -87,32 +87,43 @@ namespace CourseCRM.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Course course)
         {
-            if (id != course.Id)
+            try
             {
-                return NotFound();
-            }
+                if (id != course.Id)
+                {
+                    return NotFound();
+                }
 
-            if (ModelState.IsValid)
-            {
-                try
+                if (ModelState.IsValid)
                 {
-                    _context.Update(course);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CourseExists(course.Id))
+                    try
                     {
-                        return NotFound();
+                        _context.Course.Update(course);
+                        await _context.SaveChangesAsync();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!CourseExists(course.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
+                return View(course);
             }
-            return View(course);
+            catch (Exception)
+            {
+
+                TempData["MensagemErro"] = $"Não foi possível editar seu curso, tente novamante!" +
+                   $"\nProvavelmente está tentando colocar um nome  já existente!";
+                return View(course);
+            }
+            
         }
 
         public async Task<IActionResult> Delete(int? id)

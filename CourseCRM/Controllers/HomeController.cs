@@ -31,11 +31,6 @@ namespace CourseCRM.Controllers
         {
             try
             {
-                var getLead = _courseRepository.GetLead(lead.Email, lead.Cpf);
-                if (getLead != null)
-                {
-                    throw new Exception("Já existe um estudante com esse Email ou CPF!");
-                }
                 if (ModelState.IsValid)
                 {
 
@@ -47,11 +42,11 @@ namespace CourseCRM.Controllers
 
                 return View("~/Views/Lead/CreateLeader.cshtml", lead);
             }
-            catch (Exception erro)
+            catch (Exception)
             {
                 TempData["MensagemErro"] = $"Não foi possível cadastrar seu usuário, tente novamante!" +
-                    $"\nDetalhe do erro: {erro.Message}";
-                return RedirectToAction("Index");
+                    $"\nProvavelmente já existe um estudante com esse Email ou CPF!";
+                return View("~/Views/Lead/CreateLeader.cshtml", lead);
             }
         }
 
