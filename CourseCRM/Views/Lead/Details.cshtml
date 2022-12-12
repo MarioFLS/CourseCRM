@@ -1,0 +1,69 @@
+﻿@model CourseCRM.Models.Lead
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalhes do Estudante</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nome
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            CPF
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cpf)
+        </dd>
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+    @if (Model.Enrollments != null && Model.Enrollments.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Data da Matrícula</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Enrollments)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course!.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Registration)
+                        </td>
+                        <td>
+                            <a asp-controller="Enrollments" asp-action="Details" class="btn btn-warning" style="color: floralwhite" role="button" asp-route-id="@item.Id">Detalhes</a> |
+                            <a asp-controller="Enrollments" asp-action="Delete" class="btn btn-danger" role="button" asp-route-id="@item.Id">Deletar</a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    } else {
+
+        <h4 class="display-6 text-center">Você não está Matrículado em nenhum curso</h4>
+    }
+            
+   
+</div>
+<div>
+    <a asp-controller="Home" asp-action="Index" role="button" class="btn btn-primary">Voltar a Lista de Estudantes</a>
+</div>
