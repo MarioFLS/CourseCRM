@@ -39,7 +39,7 @@ namespace CourseCRM.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Course");
+                    b.ToTable("Course", (string)null);
 
                     b.HasData(
                         new
@@ -88,7 +88,7 @@ namespace CourseCRM.Migrations
                     b.HasIndex("LeadId", "CourseId")
                         .IsUnique();
 
-                    b.ToTable("Enrollment");
+                    b.ToTable("Enrollment", (string)null);
                 });
 
             modelBuilder.Entity("CourseCRM.Models.Lead", b =>
@@ -119,7 +119,7 @@ namespace CourseCRM.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Leads");
+                    b.ToTable("Leads", (string)null);
                 });
 
             modelBuilder.Entity("CourseCRM.Models.Enrollment", b =>
