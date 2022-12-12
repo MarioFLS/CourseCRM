@@ -117,7 +117,7 @@ namespace CourseCRM.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool EnrollmentExists(int id)

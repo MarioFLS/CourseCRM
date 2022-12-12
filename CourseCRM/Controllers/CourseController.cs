@@ -120,10 +120,9 @@ namespace CourseCRM.Controllers
             {
 
                 TempData["MensagemErro"] = $"Não foi possível editar seu curso, tente novamante!" +
-                   $"\nProvavelmente está tentando colocar um nome  já existente!";
+                   $"\nProvavelmente está tentando colocar um nome já existente!";
                 return View(course);
-            }
-            
+            }   
         }
 
         public async Task<IActionResult> Delete(int? id)
