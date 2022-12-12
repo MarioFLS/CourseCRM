@@ -1,4 +1,5 @@
 ﻿using CourseCRM.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CourseCRM.Repository
 {
@@ -27,6 +28,29 @@ namespace CourseCRM.Repository
             return lead;
         }
 
+        public Lead? GetLead(int? id)
+        {
+
+            Lead? lead = _context.Leads.FirstOrDefault(l => l.Id == id);
+            return lead;
+        }
+
+        public Lead? GetLeadAndEnrollment(int? id)
+        {
+            List<Enrollment> enrollments = _context.Enrollment.Where(e => e.LeadId == id)
+                .Include(e => e.Course)
+                .Include(e => e.Lead)
+                .ToList();
+
+            Lead? lead = _context.Leads.FirstOrDefault(l => l.Id == id);
+
+            if (lead != null)
+            {
+                lead.Enrollments = enrollments;
+            }
+            return lead;
+        }
+
         public Lead CreateLeader(Lead lead)
         {
             lead.Name = lead.Name.Trim();
@@ -37,5 +61,21 @@ namespace CourseCRM.Repository
             return lead;
         }
 
+        public void DeleteLeader(Lead lead)
+        {
+            _context.Leads.Remove(lead);
+            _context.SaveChanges();
+        }
+
+        public void EditLeader(Lead lead)
+        {
+            _context.Leads.Update(lead);
+            _context.SaveChanges();
+        }
+
+        public bool LeadExists(int? id)
+        {
+            return _context.Leads.Any(l => l.Id == id);
+        }
     }
 }
