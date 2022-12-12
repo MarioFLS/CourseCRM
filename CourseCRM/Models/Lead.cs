@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using CourseCRM.Helpers;
+using Microsoft.EntityFrameworkCore;
 
 namespace CourseCRM.Models
 {
