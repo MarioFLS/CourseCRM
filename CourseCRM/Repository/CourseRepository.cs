@@ -39,7 +39,6 @@ namespace CourseCRM.Repository
         {
             List<Enrollment> enrollments = _context.Enrollment.Where(e => e.LeadId == id)
                 .Include(e => e.Course)
-                .Include(e => e.Lead)
                 .ToList();
 
             Lead? lead = _context.Leads.FirstOrDefault(l => l.Id == id);
