@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CourseCRM.Helpers
 {
