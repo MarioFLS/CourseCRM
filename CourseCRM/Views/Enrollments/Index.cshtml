@@ -14,13 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Course)
+                Curso
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Lead)
+                Estudante
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Registration)
+                Data
             </th>
             <th></th>
         </tr>
@@ -33,7 +33,7 @@
                     @Html.DisplayFor(modelItem => item.Course!.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Lead!.Cpf)
+                    @Html.DisplayFor(modelItem => item.Lead!.Email)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Registration)
@@ -41,7 +41,6 @@
                 <td>
                     <a asp-action="Details" class="btn btn-warning" style="color: floralwhite" role="button" asp-route-id="@item.Id">Detalhes</a> |
                     <a asp-action="Delete" class="btn btn-danger" role="button" asp-route-id="@item.Id">Deletar</a>
-
                 </td>
             </tr>
         }
