@@ -15,7 +15,7 @@ namespace CourseCRM.Repository
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            
+
             // Chaves Unicas Tabela de Lead
             builder.Entity<Lead>()
                 .HasIndex(u => u.Email)
@@ -26,7 +26,7 @@ namespace CourseCRM.Repository
 
             // As duas chaves devem juntas devem ser unicas
             builder.Entity<Enrollment>()
-                .HasIndex(e => new { e.LeadId , e.CourseId })
+                .HasIndex(e => new { e.LeadId, e.CourseId })
                 .IsUnique();
 
             // O nome deve ser unico
@@ -56,7 +56,7 @@ namespace CourseCRM.Repository
                     Name = "React"
                 }
                 );
-                
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
