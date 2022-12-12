@@ -8,13 +8,13 @@ namespace CourseCRM.Models
         public int Id { get; set; }
 
         public int CourseId { get; set; }
-        public Course Course { get; set; } = default!;
+        public Course? Course { get; set; } = default!;
         public int LeadId { get; set; }
-        public Lead Lead { get; set; } = default!;
+        public Lead? Lead { get; set; } = default!;
 
         [Required(ErrorMessage = "{0} requerido")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime Registration { get; set; }
+        public DateTime Registration { get; set; } = DateTime.Now;
     }
 }
