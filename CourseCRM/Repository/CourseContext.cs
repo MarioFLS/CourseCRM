@@ -15,11 +15,23 @@ namespace CourseCRM.Repository
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            
+            // Chaves Unicas Tabela de Lead
             builder.Entity<Lead>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
             builder.Entity<Lead>()
                 .HasIndex(u => u.Cpf)
+                .IsUnique();
+
+            // As duas chaves devem juntas devem ser unicas
+            builder.Entity<Enrollment>()
+                .HasIndex(e => new { e.LeadId , e.CourseId })
+                .IsUnique();
+
+            // O nome deve ser unico
+            builder.Entity<Course>()
+                .HasIndex(c => c.Name)
                 .IsUnique();
 
             builder.Entity<Course>().HasData(
