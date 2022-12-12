@@ -6,5 +6,7 @@ namespace CourseCRM.Repository
     {
         public List<Lead> GetAllLeads();
         public List<Course> GetAllCourse();
+        public Lead? GetLead(string email, string cpf);
+        public Lead CreateLeader(Lead lead);
     }
 }
