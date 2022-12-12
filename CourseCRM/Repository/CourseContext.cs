@@ -12,10 +12,20 @@ namespace CourseCRM.Repository
         public DbSet<Course> Course { get; set; }
         public DbSet<Enrollment> Enrollment { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Lead>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+            builder.Entity<Lead>()
+                .HasIndex(u => u.Cpf)
+                .IsUnique();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=127.0.0.1;Database=course;User=SA;Password=Password12!;Encrypt=False");
-
+            
         }
 
     }
