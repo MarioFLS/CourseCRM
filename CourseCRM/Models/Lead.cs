@@ -1,13 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using CourseCRM.Helpers;
-using Microsoft.EntityFrameworkCore;
+﻿using CourseCRM.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace CourseCRM.Models
 {
     public class Lead
     {
         public int Id { get; set; }
-        
+
         [Required(ErrorMessage = "O nome é obrigatório")]
         [MinLength(3, ErrorMessage = "O nome deve ter no minimo 3 caracteres")]
         public string Name { get; set; } = default!;
