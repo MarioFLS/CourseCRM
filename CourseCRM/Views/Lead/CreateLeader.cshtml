@@ -32,9 +32,6 @@
         <label for="nome" class="form-label">CPF (Somente os números)</label>
         <input max="11" min="11" type="text" asp-for="Cpf" class="form-control" placeholder="Digite o CPF do estudante(Somente os números)">
         @Html.ValidationMessageFor(x => x.Cpf, null, new { @class = "text-danger" })
-        <div class="invalid-feedback">
-            Please enter a message in the textarea.
-        </div>
 
     </div>
 
