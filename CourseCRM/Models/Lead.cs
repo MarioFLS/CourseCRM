@@ -1,5 +1,6 @@
 ﻿using CourseCRM.Helpers;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CourseCRM.Models
 {
@@ -23,6 +24,8 @@ namespace CourseCRM.Models
         [AnnotationValidateCpf(ErrorMessage = "CPF Inválido")]
         public string Cpf { get; set; } = default!;
 
+        [NotMapped]
+        public List<Enrollment>? Enrollments { get; set; } = default!;
 
         public string FormatCpf()
         {
