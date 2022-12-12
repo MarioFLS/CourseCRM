@@ -21,11 +21,35 @@ namespace CourseCRM.Repository
             builder.Entity<Lead>()
                 .HasIndex(u => u.Cpf)
                 .IsUnique();
+
+            builder.Entity<Course>().HasData(
+                new Course()
+                {
+                    Id = 1,
+                    Name = "C#"
+                },
+                new Course()
+                {
+                    Id = 2,
+                    Name = "dotNet"
+                },
+                new Course()
+                {
+                    Id = 3,
+                    Name = "JavaScript"
+                },
+                new Course()
+                {
+                    Id = 4,
+                    Name = "React"
+                }
+                );
+                
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=127.0.0.1;Database=course;User=SA;Password=Password12!;Encrypt=False");
-            
+
         }
 
     }
