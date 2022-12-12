@@ -8,7 +8,7 @@
     <h2 class="display-8">Esses são todos os nossos Estudantes!</h2>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-success" asp-controller="Home" asp-action="CreateLeader" role="button">Adicionar novo Estudante</a>
+        <a class="btn btn-success" asp-controller="Lead" asp-action="Create" role="button">Adicionar novo Estudante</a>
     </div>
 
     @if (TempData["MensagemSucesso"] != null)
@@ -48,6 +48,11 @@
                         <th>@lead.Name</th>
                         <th>@lead.Email</th>
                         <th>@lead.FormatCpf()</th>
+                        <td>
+                            <a class="btn btn-success" asp-controller="Lead" asp-action="Edit" asp-route-id="@lead.Id" role="button">Editar</a> |
+                            <a class="btn btn-warning" style="color: floralwhite" asp-controller="Lead" asp-action="Details" asp-route-id="@lead.Id" role="button">Detalhes</a> |
+                            <a class="btn btn-danger" asp-controller="Lead" asp-action="Delete" asp-route-id="@lead.Id" role="button">Deletar</a>
+                        </td>
                     </tr>
                 }
             }
