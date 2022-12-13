@@ -88,13 +88,23 @@ Você pode reiniciar ou derrubar o container, isso resolverá esse problema.
 #### Dentro da pasta do projeto:
 Use os comandos pra acessar de fato a aplicação:
 
+Se estiver fora da pasta do Projeto:
+
 `cd YourCourse`
+
+Entre dentro da pasta Raiz do Projeto rode:
+
 `cd CourseCRM`
 
-em seguida atualize o banco de dados.
+Em seguida atualize o banco de dados. Utilize o comando:
 
 `dotnet ef database update`
+
 E pronto! O Banco estará pronto para ser usado!
+
+Agora é hora de Iniciar o Projeto, rode o comando a seguir:
+
+`dotnet run`
 
 Lembre-se você precisar estar com o docker rodando ou com o SQLServer rodando na sua maquina!
 
