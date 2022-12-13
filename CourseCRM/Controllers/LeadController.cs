@@ -98,14 +98,7 @@ namespace CourseCRM.Controllers
                             throw;
                         }
                     }
-                    return View(lead);
                 }
-
-                if (!ModelState.IsValid)
-                {
-                    return Json(new { success = false, errors = ModelState.Values.Where(i => i.Errors.Count > 0) });
-                }
-                return View(lead);
             }
             catch (Exception)
             {
