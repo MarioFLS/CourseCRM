@@ -99,6 +99,7 @@ namespace CourseCRM.Controllers
                         }
                     }
                 }
+                return View(lead);
             }
             catch (Exception)
             {
