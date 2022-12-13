@@ -80,11 +80,6 @@ Update-Database
 
 ## Iniciando a aplicação
 
-#### Utilize o comando abaixo para iniciar a aplicação
-`dotnet run`
-Como dito antes, ele irá transpilar o código e iniciar o uso. Não esqueça se for sair dele use `CTRL + C` ou equivalente. Se não a porta ainda será ocupada.
-Você pode reiniciar ou derrubar o container, isso resolverá esse problema.
-
 #### Dentro da pasta do projeto:
 Use os comandos pra acessar de fato a aplicação:
 
@@ -102,12 +97,12 @@ Em seguida atualize o banco de dados. Utilize o comando:
 
 E pronto! O Banco estará pronto para ser usado!
 
-Agora é hora de Iniciar o Projeto, rode o comando a seguir:
-
-`dotnet run`
-
 Lembre-se você precisar estar com o docker rodando ou com o SQLServer rodando na sua maquina!
 
+#### Utilize o comando abaixo para iniciar a aplicação
+`dotnet run`
+Ele irá transpilar o código e iniciar o uso. Não esqueça se for sair dele use `CTRL + C` ou equivalente. Se não a porta ainda será ocupada.
+Você pode reiniciar ou derrubar o container, isso resolverá esse problema.
 
 ## Estou aqui para Ajudar!
 Havendo algum problema. Entre em contato comigo, poderei auxiliar a resolver os problemas!
