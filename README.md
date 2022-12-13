@@ -86,8 +86,9 @@ Como dito antes, ele irá transpilar o código e iniciar o uso. Não esqueça se
 Você pode reiniciar ou derrubar o container, isso resolverá esse problema.
 
 #### Dentro da pasta do projeto:
-Use o comando pra acessar de fato a aplicação:
+Use os comandos pra acessar de fato a aplicação:
 
+`cd YourCourse`
 `cd CourseCRM`
 
 em seguida atualize o banco de dados.
