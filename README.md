@@ -14,7 +14,7 @@ Esse Projeto busca simular o gerenciamento de Curso. Podendo criar  cursos, cada
 <details>
   <summary><strong>🐳 Usando Docker</strong></summary><br />
  
-  > Rode o serviço `SQLServer` com o comando `docker-compose up -d`.
+  > Rode o serviço `SQLServer`: entra na pasta com o comando: `cd YourCourse` e inicialize o Contêiner com o comando: `docker-compose up -d`.
   - Lembre-se de parar o `SQLServer` se estiver usando localmente na porta padrão (`1433`), a porta pode ser mudada, mas não é aconselhado que se faça. Isto é falado mais a baixo;
 
   <br />
